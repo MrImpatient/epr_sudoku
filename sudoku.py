@@ -17,9 +17,12 @@ while (game == True):
     print(b)
 
     for i in range(len(b)):
-        if b[i] == "save":
+        if b[i] in ("save", "s"):
             if (i+1) < len(b):
-                file = b[i+1] + ".sav"
+                if ".sav" not in b[i+1]:
+                    file = b[i+1] + ".sav"
+                else:
+                    file = b[i+1]
                 print("Board gespeichert unter ", file)
             else:            
                 file =''
@@ -27,9 +30,12 @@ while (game == True):
             board.save_to_file(file)
         if b[i] in ("quit","exit", "q", "e"):
             game = False
-        if b[i] == "load":
+        if b[i] in ("load", "l"):
             if (i+1) < len(b):
-                file = b[i+1] + ".sav"
+                if ".sav" not in b[i+1]:
+                    file = b[i+1] + ".sav"
+                else:
+                    file = b[i+1]
                 print("Board geladen von ", file)
             else:            
                 file =''

@@ -44,8 +44,11 @@ def save_to_file(file: str):
     
     if file == "":
         file = "default.sav"
-
-    filehandler = open(file,"wb")
+    try:
+        filehandler = open(file,"wb")
+    except IOError:
+        print("Datei kann nicht angelegt werden!")
+        return 0
     pickle.dump(sd, filehandler)
     filehandler.close()
 
@@ -55,7 +58,10 @@ def load_from_file(file: str):
 
     if file == "":
         file = "default.sav"
-
-    filehandler = open(file, "rb")
+    try:
+        filehandler = open(file, "rb")
+    except IOError:
+        print("Datei kann nicht geöffnet werden!")
+        return 0
     sd = pickle.load(filehandler)
     filehandler.close()
