@@ -4,7 +4,7 @@ def parser(command:str):
     x = []
     temp = ''
     i = 0
-    while i < (len(command)-1):
+    while i < (len(command)):
         while command[i] != " ":
             temp += command[i]
             i = i + 1
