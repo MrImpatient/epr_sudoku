@@ -9,9 +9,12 @@ def init():
          for col in range(9):
                  sd[(row,col)] = 0
 
-def plot():
+    #sd[2,1] = 5
+    #sd[8,4] = 3
 
+def plot():
     global sd
+    
     print("\n\n")
     print("   ","  A   B   C   D   E   F   G   H   I")
     print("   ","*************************************")
@@ -35,4 +38,24 @@ def plot():
     print("   ","*************************************")
     print("\n\n")
 
+def save_to_file(file: str):
+    import pickle
+    global sd
+    
+    if file == "":
+        file = "default.sav"
 
+    filehandler = open(file,"wb")
+    pickle.dump(sd, filehandler)
+    filehandler.close()
+
+def load_from_file(file: str):
+    import pickle
+    global sd
+
+    if file == "":
+        file = "default.sav"
+
+    filehandler = open(file, "rb")
+    sd = pickle.load(filehandler)
+    filehandler.close()

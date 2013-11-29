@@ -1,0 +1,2 @@
+- Fehlermeldungen bei falschen Eingaben, Stabilität usw.
+- Falls user z. B. meinedatei.sav eingibt, dann das normalerweise angehängte .sav weglassen
