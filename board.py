@@ -1,19 +1,15 @@
 from util.getch import getch
 
-sd = {}
-
 def init():
-    global sd
-    
+
+    sd = {}
     for row in range(9):
          for col in range(9):
                  sd[(row,col)] = 0
 
-    #sd[2,1] = 5
-    #sd[8,4] = 3
+    return sd
 
-def plot():
-    global sd
+def plot(sd):
     
     print("\n\n")
     print("   ","  A   B   C   D   E   F   G   H   I")
@@ -38,30 +34,4 @@ def plot():
     print("   ","*************************************")
     print("\n\n")
 
-def save_to_file(file: str):
-    import pickle
-    global sd
-    
-    if file == "":
-        file = "default.sav"
-    try:
-        filehandler = open(file,"wb")
-    except IOError:
-        print("Datei kann nicht angelegt werden!")
-        return 0
-    pickle.dump(sd, filehandler)
-    filehandler.close()
 
-def load_from_file(file: str):
-    import pickle
-    global sd
-
-    if file == "":
-        file = "default.sav"
-    try:
-        filehandler = open(file, "rb")
-    except IOError:
-        print("Datei kann nicht geöffnet werden!")
-        return 0
-    sd = pickle.load(filehandler)
-    filehandler.close()
