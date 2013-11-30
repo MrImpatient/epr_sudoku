@@ -22,8 +22,10 @@ def save_to_file(i, b, sd):
         if b[i+1] not in ("quit", "q", "exit", "e", "update", "u"):
             if ".sav" not in b[i+1]:
                 file = b[i+1] + ".sav"
+                b[i+1] = "filename" #prevent double-use 
             else:
                 file = b[i+1]
+                b[i+1] = "filename" #prevent double-use 
         else:
             file = "default.sav"
     else:            
@@ -43,8 +45,10 @@ def load_from_file(i, b):
         if b[i+1] not in ("quit", "q", "exit", "e", "update", "u"):
             if ".sav" not in b[i+1]:
                 file = b[i+1] + ".sav"
+                b[i+1] = "filename" #prevent double-use
             else:
                 file = b[i+1]
+                b[i+1] = "filename" #prevent double-use
         else:
             file ="default.sav"
     else:            

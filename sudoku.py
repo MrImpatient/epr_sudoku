@@ -28,7 +28,8 @@ while (game == True):
         elif b[i] in ("update", "u"):
             board.plot(gameboard)
         else:
-            print("Befehl ", b[i], " nicht gefunden!")
+            if b[i] != "filename":
+                print("Befehl ", b[i], " nicht gefunden!")
 
 
 print("Bye!")
