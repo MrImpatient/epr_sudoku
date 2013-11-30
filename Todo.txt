@@ -1,2 +1,12 @@
-- Fehlermeldungen bei falschen Eingaben, Stabilit�t usw.
-- Falls user z. B. meinedatei.sav eingibt, dann das normalerweise angeh�ngte .sav weglassen
+- Von meiner Seite: noch Befehl undo (u) einbauen (tue ich wohl nachdem andere Befehle eingebaut sind)
+- Von Deiner Seite: Befehle "add", "delete" und "change" ... und eventuell neue ASCII-Grafik
+
+Schon implementiert:
+
+- Befehle refresh (r) (lädt Board neu), 
+          save (s) [Filename] (Filename optional, sonst devault.sav), 
+          load (l) [Filename] (Filename optional, sonst default.sav)
+- User wird auf unbekannte Befehle hingewiesen
+- Befehlskombis möglich, z. B. l r (lädt Daten aus default.sav und updatet das Brett)... könnte man auch 
+  zu einem Befehl kombinieren natürlich... mal schauen. 
+- Error-checking beim Laden und Speichern von Dateien
