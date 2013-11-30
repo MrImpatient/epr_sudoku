@@ -3,8 +3,8 @@ from util.getch import getch
 import board
 import command
 
-board.init()
-board.plot()
+gameboard = board.init()
+board.plot(gameboard)
 
 game = True
 
@@ -18,31 +18,17 @@ while (game == True):
 
     for i in range(len(b)):
         if b[i] in ("save", "s"):
-            if (i+1) < len(b):
-                if ".sav" not in b[i+1]:
-                    file = b[i+1] + ".sav"
-                else:
-                    file = b[i+1]
-                print("Board gespeichert unter ", file)
-            else:            
-                file =''
-                print("Board gespeichert unter default.sav")
-            board.save_to_file(file)
-        if b[i] in ("quit","exit", "q", "e"):
+            command.save_to_file(i, b, gameboard)
+        elif b[i] in ("quit","exit", "q", "e"):
             game = False
-        if b[i] in ("load", "l"):
-            if (i+1) < len(b):
-                if ".sav" not in b[i+1]:
-                    file = b[i+1] + ".sav"
-                else:
-                    file = b[i+1]
-                print("Board geladen von ", file)
-            else:            
-                file =''
-                print("Board geladen von default.sav")
-            board.load_from_file(file)
-        if b[i] in ("update", "u"):
-            board.plot()
+        elif b[i] in ("load", "l"):
+            temp = command.load_from_file(i,b)
+            if temp != 0:
+                gameboard = temp
+        elif b[i] in ("update", "u"):
+            board.plot(gameboard)
+        else:
+            print("Befehl ", b[i], " nicht gefunden!")
 
 
 print("Bye!")
