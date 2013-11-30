@@ -14,8 +14,6 @@ while (game == True):
 
     b = command.parser(userstring)
 
-    print(b)
-
     for i in range(len(b)):
         if b[i] in ("save", "s"):
             command.save_to_file(i, b, gameboard)
@@ -25,7 +23,7 @@ while (game == True):
             temp = command.load_from_file(i,b)
             if temp != 0:
                 gameboard = temp
-        elif b[i] in ("update", "u"):
+        elif b[i] in ("refresh", "r"):
             board.plot(gameboard)
         else:
             if b[i] != "filename":

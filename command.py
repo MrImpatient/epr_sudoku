@@ -19,7 +19,7 @@ def parser(command:str):
 def save_to_file(i, b, sd):
     if (i+1) < len(b):
         #make sure that second argument is filename and not a command
-        if b[i+1] not in ("quit", "q", "exit", "e", "update", "u"):
+        if b[i+1] not in ("quit", "q", "exit", "e", "refresh", "r"):
             if ".sav" not in b[i+1]:
                 file = b[i+1] + ".sav"
                 b[i+1] = "filename" #prevent double-use 
@@ -34,7 +34,7 @@ def save_to_file(i, b, sd):
         filehandler = open(file,"wb")
         print("Board gespeichert unter ", file)
     except IOError:
-        print("Datei kann nicht angelegt werden!")
+        print("Datei",file,"kann nicht angelegt werden!")
         return 0
     pickle.dump(sd, filehandler)
     filehandler.close()
@@ -42,7 +42,7 @@ def save_to_file(i, b, sd):
 def load_from_file(i, b):
     if (i+1) < len(b):
         #make sure that second argument is filename and not a command
-        if b[i+1] not in ("quit", "q", "exit", "e", "update", "u"):
+        if b[i+1] not in ("quit", "q", "exit", "e", "refresh", "r"):
             if ".sav" not in b[i+1]:
                 file = b[i+1] + ".sav"
                 b[i+1] = "filename" #prevent double-use
@@ -58,7 +58,7 @@ def load_from_file(i, b):
         filehandler = open(file, "rb")
         print("Board geladen von ", file)
     except IOError:
-        print("Datei kann nicht geöffnet werden!")
+        print("Datei",file, "kann nicht geöffnet werden!")
         return 0
     sd = pickle.load(filehandler)
     filehandler.close()
