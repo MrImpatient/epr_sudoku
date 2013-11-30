@@ -10,7 +10,7 @@ game = True
 
 while (game == True):
 
-    userstring = input("Geben Sie einen Befehl ein: ")
+    userstring = input("Geben Sie einen Befehl ein: ").lower()
 
     b = command.parser(userstring)
 
