@@ -25,9 +25,12 @@ while (game == True):
                 gameboard = temp
         elif b[i] in ("refresh", "r"):
             board.plot(gameboard)
+        elif b[i] in ("add", "a"):
+            gameboard = command.add(gameboard, b[1:])
+
         else:
             if b[i] != "filename":
-                print("Befehl ", b[i], " nicht gefunden!")
+                print("Befehl", b[i], "nicht gefunden!")
 
 
 print("Bye!")
