@@ -1,16 +1,15 @@
 from util.getch import getch
-
+from util.clear_screen import clear_screen
 def init():
 
     sd = {}
-    for row in range(9):
-         for col in range(9):
-                 sd[(row,col)] = 0
-
+    for col in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
+         for row in range(1,10):
+                 sd[(col,row)] = " "
     return sd
 
 def plot(sd):
-    
+    clear_screen()
     print("\n\n")
     print("""
      A   B   C   D   E   F   G   H   I
@@ -33,15 +32,15 @@ def plot(sd):
    +           +           +           |
  9 | {}   {}   {} | {}   {}   {} | {}   {}   {} |
    +---+---+---+-----------+-----------+
-    """.format(sd[0,0], sd[0,1], sd[0,2], sd[0,3], sd[0,4], sd[0,5], sd[0,6], sd[0,7], sd[0,8],
-               sd[1,0], sd[1,1], sd[1,2], sd[1,3], sd[1,4], sd[1,5], sd[1,6], sd[1,7], sd[1,8],
-               sd[2,0], sd[2,1], sd[2,2], sd[2,3], sd[2,4], sd[2,5], sd[2,6], sd[2,7], sd[2,8],
-               sd[3,0], sd[3,1], sd[3,2], sd[3,3], sd[3,4], sd[3,5], sd[3,6], sd[3,7], sd[3,8],
-               sd[4,0], sd[4,1], sd[4,2], sd[4,3], sd[4,4], sd[4,5], sd[4,6], sd[4,7], sd[4,8],
-               sd[5,0], sd[5,1], sd[5,2], sd[5,3], sd[5,4], sd[5,5], sd[5,6], sd[5,7], sd[5,8],
-               sd[6,0], sd[6,1], sd[6,2], sd[6,3], sd[6,4], sd[6,5], sd[6,6], sd[6,7], sd[6,8],
-               sd[7,0], sd[7,1], sd[7,2], sd[7,3], sd[7,4], sd[7,5], sd[7,6], sd[7,7], sd[7,8],
-               sd[8,0], sd[8,1], sd[8,2], sd[8,3], sd[8,4], sd[8,5], sd[8,6], sd[8,7], sd[8,8]))
+    """.format(sd["a",1], sd["a",2], sd["a",3], sd["a",4], sd["a",5], sd["a",6], sd["a",7], sd["a",8], sd["a",9],
+               sd["b",1], sd["b",2], sd["b",3], sd["b",4], sd["b",5], sd["b",6], sd["b",7], sd["b",8], sd["b",9],
+               sd["c",1], sd["c",2], sd["c",3], sd["c",4], sd["c",5], sd["c",6], sd["c",7], sd["c",8], sd["c",9],
+               sd["d",1], sd["d",2], sd["d",3], sd["d",4], sd["d",5], sd["d",6], sd["d",7], sd["d",8], sd["d",9],
+               sd["e",1], sd["e",2], sd["e",3], sd["e",4], sd["e",5], sd["e",6], sd["e",7], sd["e",8], sd["e",9],
+               sd["f",1], sd["f",2], sd["f",3], sd["f",4], sd["f",5], sd["f",6], sd["f",7], sd["f",8], sd["f",9],
+               sd["g",1], sd["g",2], sd["g",3], sd["g",4], sd["g",5], sd["g",6], sd["g",7], sd["g",8], sd["g",9],
+               sd["h",1], sd["h",2], sd["h",3], sd["h",4], sd["h",5], sd["h",6], sd["h",7], sd["h",8], sd["h",9],
+               sd["i",1], sd["i",2], sd["i",3], sd["i",4], sd["i",5], sd["i",6], sd["i",7], sd["i",8], sd["i",9]))
     print("\n\n")
 
 
