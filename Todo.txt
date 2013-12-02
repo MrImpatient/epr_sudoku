@@ -8,6 +8,7 @@
           * Dokumentation im Code selber
           * In doctest einlesen
           * Viel sudoku spielen
+          * email an tutor: aufgaben einzeln abgeben oder gesamtprojekt?
 
 
 Schon implementiert:
