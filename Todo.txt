@@ -1,8 +1,17 @@
-- Von meiner Seite: noch Befehl undo (u) einbauen (tue ich wohl nachdem andere Befehle eingebaut sind)
-- Von Deiner Seite: Befehle "add", "delete" und "change" ... und eventuell neue ASCII-Grafik
+- Frank:  * noch Befehl undo (u) einbauen
+          * doctest
+          
+- Sascha: * prüfen ob Klassen implementiert werden -> implementierung
+          * Logik Zahlenüberprüfung
+
+- Beide:  * Handbuch auf google docs
+          * Dokumentation im Code selber
+          * In doctest einlesen
+          * Viel sudoku spielen
+
 
 Schon implementiert:
-
+- Befehle "add", "delete" und "change" und neue ASCII-Grafik
 - Befehle refresh (r) (lädt Board neu), 
           save (s) [Filename] (Filename optional, sonst devault.sav), 
           load (l) [Filename] (Filename optional, sonst default.sav)
