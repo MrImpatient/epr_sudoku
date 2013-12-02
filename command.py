@@ -63,3 +63,40 @@ def load_from_file(i, b):
     sd = pickle.load(filehandler)
     filehandler.close()
     return sd
+
+def add(gameboard, command):
+    for i in command:
+        if len(i) == 3:
+            if (i[0], int(i[1])) in gameboard:
+                if gameboard[i[0],int(i[1])] == " ":
+                    gameboard[i[0],int(i[1])] = i[2]
+                else:
+                    print("Piece already set!")
+            else:
+                print("Out of range!")
+        else:
+            print("Wrong syntax. Use '(a)dd RowColNumber'")
+    return gameboard
+
+def delete(gameboard, command):
+    for i in command:
+        if len(i) == 2:
+            if (i[0], int(i[1])) in gameboard:
+                if gameboard[i[0],int(i[1])] != " ":
+                    gameboard[i[0],int(i[1])] = " "
+                else:
+                    print("Spot is empty!")
+            else:
+                print("Out of range!")
+        else:
+            print("Wrong syntax. Use '(d)elete RowCol'")
+    return gameboard
+
+def change(gameboard, command):
+    for i in command:
+        if gameboard[i[0],int(i[1])] != " ":
+            gameboard = delete(gameboard, [i[:-1]])
+            gameboard = add(gameboard, [i])
+        else:
+            print("Can only change non empty spot.")
+    return gameboard

@@ -27,7 +27,13 @@ while (game == True):
             board.plot(gameboard)
         elif b[i] in ("add", "a"):
             gameboard = command.add(gameboard, b[1:])
-
+            board.plot(gameboard)
+        elif b[i] in ("delete", "d"):
+            gameboard = command.delete(gameboard, b[1:])
+            board.plot(gameboard)
+        elif b[i] in ("change", "c"):
+            gameboard = command.change(gameboard, b[1:])
+            board.plot(gameboard)
         else:
             if b[i] != "filename":
                 print("Befehl", b[i], "nicht gefunden!")
