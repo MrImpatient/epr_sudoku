@@ -1,5 +1,6 @@
 import pickle
-from game.check_position import check_position
+import game.check_position
+from util.getch import getch
 
 class Commands(object):
     def __init__(self):
@@ -70,41 +71,73 @@ class Commands(object):
         return sd
 
     def add(self, gameboard, command):
-        for i in command:
-            if len(i) == 3:
-                if (i[0], int(i[1])) in gameboard:
-                    if gameboard[i[0],int(i[1])] == " ":
-                        if check_position(gameboard, i):
-                            gameboard[i[0],int(i[1])] = i[2]
-                        else:
-                            print("Piece already in col/row!")
-                    else:
-                        print("Piece already set!")
+        for x in command: #Variable darf keinen Spaltennamen haben!
+            if len(x) == 3:
+                #error check
+                if x[0] not in ("a b c d e f g h i"):
+                    print("Spalte muss zwischen A und I liegen!")
+                    getch()
+                    return gameboard
+                elif x[1] not in ("1 2 3 4 5 6 7 8 9"):
+                    print("Reihe muss zwischen 1 und 9 liegen!")
+                    getch()
+                    return gameboard
+                elif x[2] not in ("1 2 3 4 5 6 7 8 9"):
+                    print("Wert muss zwischen 1 und 9 liegen!")
+                    getch()
+                    return gameboard
                 else:
-                    print("Out of range!")
+                    if gameboard[x[0],int(x[1])] == " ":
+                        gameboard[x[0],int(x[1])] = x[2]
+                    else:
+                        print("Wert schon gesetzt! Change benutzen!")
+                        getch()
+                        return gameboard
             else:
-                print("Wrong syntax. Use '(a)dd RowColNumber'")
+                print("Bitte nach add DREI Zeichen angeben: SpalteZeileWert")
+                getch()
         return gameboard
 
     def delete(self, gameboard, command):
-        for i in command:
-            if len(i) == 2:
-                if (i[0], int(i[1])) in gameboard:
-                    if gameboard[i[0],int(i[1])] != " ":
-                        gameboard[i[0],int(i[1])] = " "
-                    else:
-                        print("Spot is empty!")
+        for x in command:
+            if len(x) == 2:
+                #error check
+                if x[0] not in ("a b c d e f g h i"):
+                    print("Spalte muss zwischen A und I liegen!")
+                    getch()
+                    return gameboard
+                elif x[1] not in ("1 2 3 4 5 6 7 8 9"):
+                    print("Reihe muss zwischen 1 und 9 liegen!")
+                    getch()
+                    return gameboard
+                elif gameboard[x[0],int(x[1])] != " ":
+                    gameboard[x[0],int(x[1])] = " "
                 else:
-                    print("Out of range!")
+                    print("Feld ist schon leer!")
+                    getch()
             else:
-                print("Wrong syntax. Use '(d)elete RowCol'")
+                print("Bitte nach delete ZWEI Zeichen verwenden: SpalteZeile")
+                getch()
         return gameboard
 
     def change(self, gameboard, command):
-        for i in command:
-            if gameboard[i[0],int(i[1])] != " ":
-                gameboard = delete(gameboard, [i[:-1]])
-                gameboard = add(gameboard, [i])
+        for x in command:
+            #error check
+            if x[0] not in ("a b c d e f g h i"):
+                print("Spalte muss zwischen A und I liegen!")
+                getch()
+                return gameboard
+            elif x[1] not in ("1 2 3 4 5 6 7 8 9"):
+                print("Reihe muss zwischen 1 und 9 liegen!")
+                getch()
+                return gameboard
+            elif x[2] not in ("1 2 3 4 5 6 7 8 9"):
+                print("Wert muss zwischen 1 und 9 liegen!")
+                getch()
+                return gameboard
+            elif gameboard[x[0],int(x[1])] != " ":
+                self.gameboard = self.delete(gameboard, [x[:-1]])
+                self.gameboard = self.add(gameboard, [x])
             else:
-                print("Can only change non empty spot.")
+                print("Kann nur gesetzte Felder ändern!")
         return gameboard
