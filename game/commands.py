@@ -1,4 +1,5 @@
 import pickle
+from game.check_position import check_position
 
 class Commands(object):
     def __init__(self):
@@ -73,7 +74,10 @@ class Commands(object):
             if len(i) == 3:
                 if (i[0], int(i[1])) in gameboard:
                     if gameboard[i[0],int(i[1])] == " ":
-                        gameboard[i[0],int(i[1])] = i[2]
+                        if check_position(gameboard, i):
+                            gameboard[i[0],int(i[1])] = i[2]
+                        else:
+                            print("Piece already in col/row!")
                     else:
                         print("Piece already set!")
                 else:

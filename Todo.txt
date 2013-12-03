@@ -1,4 +1,4 @@
-- Frank:  * noch Befehl undo (u) einbauen
+﻿- Frank:  * noch Befehl undo (u) einbauen
           * doctest
           
 - Sascha: * prüfen ob Klassen implementiert werden -> implementierung
@@ -8,6 +8,7 @@
           * Dokumentation im Code selber
           * In doctest einlesen
           * Viel sudoku spielen
+	  * __author__ in JEDE Datei!
           * email an tutor: aufgaben einzeln abgeben oder gesamtprojekt?
 
 
