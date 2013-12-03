@@ -1,7 +1,7 @@
 from util.getch import getch
 
-from board import Board
-from command import Commands
+from game.board import Board
+from game.commands import Commands
 
 class sudoku():
     def __init__(self):
