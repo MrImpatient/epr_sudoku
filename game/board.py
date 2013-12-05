@@ -47,11 +47,6 @@ class Board(object):
                    self.sd["h",1], self.sd["h",2], self.sd["h",3], self.sd["h",4], self.sd["h",5], self.sd["h",6], self.sd["h",7], self.sd["h",8], self.sd["h",9],
                    self.sd["i",1], self.sd["i",2], self.sd["i",3], self.sd["i",4], self.sd["i",5], self.sd["i",6], self.sd["i",7], self.sd["i",8], self.sd["i",9]))
         print("\n\n")  
-
-    def checkboard(self, gameboard):
-       for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
-           for col in range(1,10):
-                gameboard[(row,col)] = "x"
        
  
     def check_rules(self, gameboard, x, y, value):
