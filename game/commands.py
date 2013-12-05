@@ -1,10 +1,11 @@
 import pickle
-import game.check_position
+from game.board import Board
 from util.getch import getch
 
 class Commands(object):
     def __init__(self):
-        pass
+        self.board = Board()
+        self.gameboard = self.board.return_board()
 
     def parser(self, command:str):
         x = []
@@ -88,7 +89,11 @@ class Commands(object):
                     return gameboard
                 else:
                     if gameboard[x[0],int(x[1])] == " ":
-                        gameboard[x[0],int(x[1])] = x[2]
+                        legal = self.board.check_rules(gameboard,x[0],x[1],str(x[2]))
+                        if legal:
+                            gameboard[x[0],int(x[1])] = x[2]
+                        else:
+                            return 0
                     else:
                         print("Wert schon gesetzt! Change benutzen!")
                         getch()
@@ -136,8 +141,14 @@ class Commands(object):
                 getch()
                 return gameboard
             elif gameboard[x[0],int(x[1])] != " ":
-                self.gameboard = self.delete(gameboard, [x[:-1]])
-                self.gameboard = self.add(gameboard, [x])
+                legal = self.board.check_rules(gameboard,x[0],x[1],str(x[2]))
+                if legal:
+                    self.gameboard = self.delete(gameboard, [x[:-1]])
+                    self.gameboard = self.add(gameboard, [x])
+                else:
+                    return 0
             else:
                 print("Kann nur gesetzte Felder ändern!")
-        return gameboard
+                return 0
+        return gameboard  
+        

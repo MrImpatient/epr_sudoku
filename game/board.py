@@ -1,4 +1,5 @@
 from util.clear_screen import clear_screen
+from util.getch import getch
 
 class Board(object):
     def __init__(self):
@@ -45,6 +46,73 @@ class Board(object):
                    self.sd["g",1], self.sd["g",2], self.sd["g",3], self.sd["g",4], self.sd["g",5], self.sd["g",6], self.sd["g",7], self.sd["g",8], self.sd["g",9],
                    self.sd["h",1], self.sd["h",2], self.sd["h",3], self.sd["h",4], self.sd["h",5], self.sd["h",6], self.sd["h",7], self.sd["h",8], self.sd["h",9],
                    self.sd["i",1], self.sd["i",2], self.sd["i",3], self.sd["i",4], self.sd["i",5], self.sd["i",6], self.sd["i",7], self.sd["i",8], self.sd["i",9]))
-        print("\n\n")
+        print("\n\n")  
+
+    def checkboard(self, gameboard):
+       for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
+           for col in range(1,10):
+                gameboard[(row,col)] = "x"
+       
+ 
+    def check_rules(self, gameboard, x, y, value):
+        if self.check_box(gameboard, x, y, value) == False:
+            print("Wert in Box schon vorhanden")
+            return False
+        if self.check_position(gameboard, x, y, value) == False:
+            print("Wert in Zeile oder Spalte schon vorhanden!")
+            return False
+        return True
 
 
+    def check_position(self,gameboard, x, y, value):
+        for col in range(1,10):
+            if col != y:
+                if gameboard[(x, col)] == value:
+                    return False
+        for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
+            if row != x:
+                if gameboard[(row, int(y))] == value:
+                    return False
+        return True
+
+    def check_box(self, gameboard, x, y, value):
+        xiter = ""
+        yiter = ""
+        row1 = ["a","b","c"]
+        row2 = ["d","e","f"]
+        row3 = ["g", "h", "i"]
+        col1 = ["1","2","3"]
+        col2 = ["4", "5", "6"]
+        col3 = ["7", "8", "9"]
+        if x in row1:
+            xiter = row1
+            if y in col1:
+               yiter = col1
+            elif y in col2:
+               yiter = col2
+            elif y in col3:
+               yiter = col3
+        elif x in row2:
+            xiter = row2
+            if y in col1:
+               yiter = col1
+            elif y in col2:
+               yiter = col2
+            elif y in col3:
+               yiter = col3
+        elif x in row3:
+            xiter = row3
+            if y in col1:
+               yiter = col1
+            elif y in col2:
+               yiter = col2
+            elif y in col3:
+               yiter = col3
+                       
+        for row in xiter:
+            for col in yiter:
+                if gameboard[(row,int(col))] == value:
+                    return False
+        return True
+
+        

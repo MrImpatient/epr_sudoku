@@ -28,17 +28,22 @@ class sudoku():
                 elif b[i] in ("refresh", "r"):
                     self.board.plot(gameboard = self.gameboard)
                 elif b[i] in ("add", "a"):
-                    self.gameboard = self.command.add(self.gameboard, b[1:])
-                    self.board.plot(gameboard = self.gameboard)
+                    temp = self.command.add(self.gameboard, b[1:])
+                    if temp != 0:
+                        self.gameboard = temp
+                        self.board.plot(gameboard = self.gameboard)
                 elif b[i] in ("delete", "d"):
                     self.gameboard = self.command.delete(self.gameboard, b[1:])
                     self.board.plot(gameboard = self.gameboard)
                 elif b[i] in ("change", "c"):
-                    self.gameboard = self.command.change(self.gameboard, b[1:])
-                    self.board.plot(gameboard = self.gameboard)
+                    temp = self.command.change(self.gameboard, b[1:])
+                    if temp != 0:
+                        self.gameboard = temp
+                        self.board.plot(gameboard = self.gameboard)
                 else:
                     if b[i] != "filename":
-                        print("Befehl", b[i], "nicht gefunden!")
+                        b[i] = ""
+                        #print("Befehl", b[i], "nicht gefunden!")
 
         print("Bye!")
         getch()
