@@ -47,14 +47,18 @@ class Board(object):
                    self.sd["h",1], self.sd["h",2], self.sd["h",3], self.sd["h",4], self.sd["h",5], self.sd["h",6], self.sd["h",7], self.sd["h",8], self.sd["h",9],
                    self.sd["i",1], self.sd["i",2], self.sd["i",3], self.sd["i",4], self.sd["i",5], self.sd["i",6], self.sd["i",7], self.sd["i",8], self.sd["i",9]))
         print("\n\n")  
-       
- 
+
+   
     def check_rules(self, gameboard, x, y, value):
         if self.check_box(gameboard, x, y, value) == False:
-            print("Wert in Box schon vorhanden")
+            print("\n------------------------------------------")
+            print("\n  Zahl", value,"ist im Kasten schon vorhanden!\n")
+            print("------------------------------------------\n")
             return False
         if self.check_position(gameboard, x, y, value) == False:
-            print("Wert in Zeile oder Spalte schon vorhanden!")
+            print("\n-------------------------------------------------------")
+            print("\n  Zahl", value,"ist in dieser Zeile/Spalte schon vorhanden!\n")
+            print("-------------------------------------------------------\n")
             return False
         return True
 

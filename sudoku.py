@@ -33,8 +33,10 @@ class sudoku():
                         self.gameboard = temp
                         self.board.plot(gameboard = self.gameboard)
                 elif b[i] in ("delete", "d"):
-                    self.gameboard = self.command.delete(self.gameboard, b[1:])
-                    self.board.plot(gameboard = self.gameboard)
+                    temp = self.command.delete(self.gameboard, b[1:])
+                    if temp != 0:
+                        self.gameboard = temp
+                        self.board.plot(gameboard = self.gameboard)
                 elif b[i] in ("change", "c"):
                     temp = self.command.change(self.gameboard, b[1:])
                     if temp != 0:
@@ -45,7 +47,7 @@ class sudoku():
                         b[i] = ""
                         #print("Befehl", b[i], "nicht gefunden!")
 
-        print("Bye!")
+        print("\nBye!\n")
         getch()
 
 if __name__ == "__main__":
