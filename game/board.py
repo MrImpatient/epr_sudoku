@@ -1,3 +1,7 @@
+__author__ = "1224270: Frank Kramer, 3402993: Sascha Reynolds"
+__version__ = "1.0"
+__email__ = "frkramer@stud.uni-frankfurt.de, sreynold@stud.uni-frankfurt.de"
+
 from util.clear_screen import clear_screen
 from util.getch import getch
 
@@ -50,6 +54,34 @@ class Board(object):
 
    
     def check_rules(self, gameboard, x, y, value):
+        """ checks the Sudoku-rules
+        returns True if the rules are fullfilled,
+        otherwise False
+        >>> sd = {}
+        >>> for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
+        ...    for col in range(1,10):
+        ...         sd[(row,col)] = " "
+        >>> sd[('a',1)] = 5
+        >>> t.check_rules(sd,'a','2',5)
+        <BLANKLINE>
+        ------------------------------------------
+        <BLANKLINE>
+          Zahl 5 ist im Kasten schon vorhanden!
+        <BLANKLINE>
+        ------------------------------------------
+        <BLANKLINE>
+        False
+        >>> sd[('a',1)] = 5
+        >>> t.check_rules(sd,'d','1',5)
+        <BLANKLINE>
+        -------------------------------------------------------
+        <BLANKLINE>
+          Zahl 5 ist in dieser Zeile/Spalte schon vorhanden!
+        <BLANKLINE>
+        -------------------------------------------------------
+        <BLANKLINE>
+        False
+        """
         if self.check_box(gameboard, x, y, value) == False:
             print("\n------------------------------------------")
             print("\n  Zahl", value,"ist im Kasten schon vorhanden!\n")
@@ -64,9 +96,11 @@ class Board(object):
 
 
     def check_position(self,gameboard, x, y, value):
-        for col in range(1,10):
+        """returns False if the same number occurs
+        twice in a row or in column"""
+        for col in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
             if col != y:
-                if gameboard[(x, col)] == value:
+                if gameboard[(x, int(col))] == value:
                     return False
         for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
             if row != x:
@@ -75,6 +109,10 @@ class Board(object):
         return True
 
     def check_box(self, gameboard, x, y, value):
+        """ checks the box rule. If one number
+        occurs twice in the box returns False,
+        otherwiese True
+        """
         xiter = ""
         yiter = ""
         row1 = ["a","b","c"]
@@ -114,4 +152,7 @@ class Board(object):
                     return False
         return True
 
-        
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(extraglobs={'t': Board()})
+

@@ -1,3 +1,7 @@
+__author__ = "1224270: Frank Kramer, 3402993: Sascha Reynolds"
+__version__ = "1.0"
+__email__ = "frkramer@stud.uni-frankfurt.de, sreynold@stud.uni-frankfurt.de"
+
 from util.getch import getch
 
 from game.board import Board
@@ -11,6 +15,12 @@ class sudoku():
         self.command = Commands()
 
     def main(self):
+        """Main game loop. Collects user input
+        and invokes internal commands to fulfill
+        user commands.
+        ->the commands are testet for input by
+        doctest in command.py and bord.py.
+        """
         exit = False
         while exit is False:
             userstring = input("Geben Sie einen Befehl ein: ").lower()
