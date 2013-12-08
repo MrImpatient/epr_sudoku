@@ -22,14 +22,11 @@ class sudoku():
         doctest in command.py and board.py.
         """
         clear_screen()
-        print("""
-                A   B   C   D   E   F
-              +---+---+---+---+---+---+
-            1 | S   U   D | O   K   U |
-              +           +           +
-
-            'h' for help.
-        """)
+        print("\n\n    A   B   C   D   E   F\n"
+              "  +---+---+---+---+---+---+\n"
+              "1 | S   U   D | O   K   U |\n"
+              "  +           +           +\n\n\n"
+              "'h' for help.")
         getch()
         clear_screen()
         exit = False
@@ -79,6 +76,7 @@ class sudoku():
         clear_screen()
         print("\nBye!\n")
         getch()
+        clear_screen()
 
 if __name__ == "__main__":
     sudoku = sudoku()

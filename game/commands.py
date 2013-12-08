@@ -196,7 +196,7 @@ class Commands(object):
                         return 0
             else:
                 print("\n-----------------------------------------------------------")
-                print("\n   Bitte nach add DREI Zeichen angeben: SpalteZeileWert \n")
+                print("\n   Bitte nach add DREI Zeichen angeben: ZeileSpalteWert \n")
                 print("-----------------------------------------------------------\n")
                 if self.ignoreit == False:
                         getch()

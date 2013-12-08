@@ -1,4 +1,4 @@
-Board designs, nach Priorität:
+﻿Board designs, nach Priorität:
 
      A   B   C   D   E   F   G   H   I
    +---+---+---+---+---+---+---+---+---+
@@ -67,3 +67,8 @@ Board designs, nach Priorität:
   9 |   |   |   ||   |   |   ||   |   |   |
     +---+---+---++---+---+---++---+---+---+
 
+
+     A   B   C   D   E   F
+   +---+---+---+---+---+---+
+ 1 | S   U   D | O   K   U |    
+   +           +           +
