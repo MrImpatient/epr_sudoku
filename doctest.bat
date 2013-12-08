@@ -1,3 +1,3 @@
-python -m game.commands
-python -m game.board
+py -3 -m game.commands
+py -3 -m game.board
 pause

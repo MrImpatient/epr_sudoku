@@ -3,6 +3,7 @@ __version__ = "1.0"
 __email__ = "frkramer@stud.uni-frankfurt.de, sreynold@stud.uni-frankfurt.de"
 
 from util.getch import getch
+from util.clear_screen import clear_screen
 
 from game.board import Board
 from game.commands import Commands
@@ -11,17 +12,28 @@ class sudoku():
     def __init__(self):
         self.board = Board()
         self.gameboard = self.board.return_board()
-        self.board.plot(gameboard = self.gameboard)
         self.command = Commands()
 
     def main(self):
         """Main game loop. Collects user input
         and invokes internal commands to fulfill
         user commands.
-        ->the commands are testet for input by
-        doctest in command.py and bord.py.
+        ->the commands are tested for input by
+        doctest in command.py and board.py.
         """
+        clear_screen()
+        print("""
+                A   B   C   D   E   F
+              +---+---+---+---+---+---+
+            1 | S   U   D | O   K   U |
+              +           +           +
+
+            'h' for help.
+        """)
+        getch()
+        clear_screen()
         exit = False
+        self.board.plot(gameboard = self.gameboard)
         while exit is False:
             userstring = input("Geben Sie einen Befehl ein: ").lower()
             b = self.command.parser(userstring)
@@ -52,11 +64,19 @@ class sudoku():
                     if temp != 0:
                         self.gameboard = temp
                         self.board.plot(gameboard = self.gameboard)
+                elif b[i] in ("help", "h"):
+                    clear_screen()
+                    f = open('help.txt', encoding="cp1252")
+                    print(f.read())
+                    f.close()
+                    getch()
+                    clear_screen()
+                    self.board.plot(gameboard = self.gameboard)
                 else:
                     if b[i] != "filename":
                         b[i] = ""
                         #print("Befehl", b[i], "nicht gefunden!")
-
+        clear_screen()
         print("\nBye!\n")
         getch()
 

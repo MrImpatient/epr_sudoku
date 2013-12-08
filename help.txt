@@ -1,0 +1,59 @@
+Kommandosprache
+===============
+
+Syntax
+------
+Generell steht jeder Befehl am Anfang der Eingabe, gefolgt von etwaigen weiteren Parametern, wie etwa der gewünschten Zelle und Zahl bei einem 'add' Befehl, oder dem Namen des Speicherstandes bei load/save.
+
+Befehle
+-------
+
+h|elp
+
+Gibt den Hilfetext aus. Benötigt keine weiteren Parameter.
+
+
+r|efresh
+
+Gibt das aktuelle Spielfeld formatiert aus und benötigt keine weiteren Parameter.
+
+
+a|dd [ZeileSpalteZahl] [...]
+
+Erlaubt das hinzufügen einer Zahl in eine oder mehrere leere Zelle. Nach dem add Befehl MUSS mindestens ein Tripel aus ZeileSpalteZahl folgen. Ein gültiger Befehl sieht also folgendermaßen aus:
+
+>>> add A11
+oder
+>>> add B57
+
+Es können allerdings auch Zahlen in mehrere Felder gleichzeitig geschrieben werden. Dabei verwendet man einfach mehrere Tripel, getrennt durch ein Leerzeichen:
+
+>>> add A11 B57 H49 E99
+
+Es wird zunächst geprüft, ob die angegebenen Zellen tatsächlich leer sind. Nur in die leeren Zellen werden die Zahlen geschrieben. Bereits belegte Zellen werden übersprungen und die Spielerin darüber in Kenntnis gesetzt.
+Das geänderte Spielfeld wird automatisch angezeigt.
+
+
+c|hange [ZeileSpalteZahl] [...]
+
+Bereits belegte Zellen können nur durch diesen Befehl geändert werden. Hier MUSS auch mindestens ein Tripel aus Zeile, Spalte und neuer Zahl mit angegeben werden. Es können aber auch mehrere Zellen gleichzeitig geändert werden. Das geänderte Spielfeld wird automatisch angezeigt.
+
+
+d|elete [ZeileSpalte] [...]
+
+Mindestens eine Zelle kann durch den delete Befehl gelöscht werden. Dabei MUSS mindestens eine Kombination aus Zeile und Spalte mit angegeben werden. Es können allerdings auch mehrere Zellen gleichzeitig gelöscht werden. Das geänderte Spielfeld wird automatisch angezeigt.
+
+
+l|oad [filename]
+
+Läd einen Spielstand aus der mit [filename] benannten Datei. [filename] kann dabei mit oder ohne Dateiendung '.sav' angegeben werden. Wird der Dateiname ohne Dateiendung angegeben so wird sie automatisch hinzugefügt. Kann die Datei nicht geladen werden so wird ein Fehler ausgegeben.
+
+
+s|ave [filename]
+
+Speichert einen Spielstand in der mit [filename] benannten Datei. [filename] kann dabei mit oder ohne Dateiendung '.sav' angegeben werden. Wird der Dateiname ohne Dateiendung angegeben so wird sie automatisch hinzugefügt. Kann die Datei nicht gespeichert werden so wird ein Fehler ausgegeben.
+
+
+e|xit oder q|uit
+
+Beendet das Spiel nach einer weiteren Bestätigungsfrage.

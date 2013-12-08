@@ -6,6 +6,9 @@ from util.clear_screen import clear_screen
 from util.getch import getch
 
 class Board(object):
+    """
+    All the board generation and printing logic lies within.
+    """
     def __init__(self):
         self.sd = {}
         for row in ["a", "b", "c", "d", "e", "f", "g", "h", "i"]:
@@ -16,6 +19,10 @@ class Board(object):
         return self.sd
 
     def plot(self, gameboard=None):
+        """
+        Prints either the empty (meaning freshly initialized) board, oar a
+        board dict passed to it.
+        """
         if gameboard is not None:
             self.sd = gameboard
         clear_screen()
